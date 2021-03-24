@@ -1,0 +1,88 @@
+@startuml
+
+entity Dataset #86baff {}
+
+entity Dataset.id #e0eeff {}
+
+Dataset.id --* Dataset
+
+
+entity Concepts #aed3ff {}
+
+entity Concepts.id #e0eeff {}
+entity Concepts.concept #e0eeff {}
+entity Concepts.name #e0eeff {}
+entity Concepts.type #e0eeff {}
+entity Concepts.unit #e0eeff {}
+
+Concepts.id -r-* Concepts
+Concepts.concept --* Concepts
+Concepts.name --* Concepts
+Concepts.type --* Concepts
+Concepts.unit --* Concepts
+
+
+entity DCLink #dadada {}
+
+DCLink "0, *"--"1, 1" Dataset
+DCLink "0, *"-l-"1, 1" Concepts
+
+entity DCLink.dataset_id #f0f0f0 {}
+entity DCLink.concept_id #f0f0f0 {}
+
+DCLink.dataset_id -u-* DCLink
+DCLink.concept_id -u-* DCLink
+
+
+entity Synonyms #aed3ff {}
+
+Synonyms "0, *"-u-"1, 1" Concepts
+
+entity Synonyms.concept_id #e0eeff {}
+entity Synonyms.synonym #e0eeff {}
+
+Synonyms.concept_id -r-* Synonyms
+Synonyms.synonym -u-* Synonyms
+
+
+entity Entities #aed3ff {}
+
+Entities "0, *"--"1, 1" Dataset
+
+entity Entities.id #e0eeff {}
+entity Entities.dataset_id #e0eeff {}
+entity Entities.name #e0eeff {}
+
+Entities.id --* Entities
+Entities.dataset_id --* Entities
+Entities.name --* Entities
+
+
+entity Datapoints #aed3ff {}
+
+Datapoints "0, *"-u-"1, 1" Dataset
+
+entity Datapoints.id #e0eeff {}
+entity Datapoints.dataset_id #e0eeff {}
+entity Datapoints.name #e0eeff {}
+
+Datapoints.id -l-* Datapoints
+Datapoints.dataset_id -u-* Datapoints
+Datapoints.name -u-* Datapoints
+
+
+entity Metadata #aed3ff {}
+
+Metadata "0, *"--"1, 1" Dataset
+
+entity Metadata.id #e0eeff {}
+entity Metadata.dataset_id #e0eeff {}
+entity Metadata.key #e0eeff {}
+entity Metadata.value #e0eeff {}
+
+Metadata.id -d-* Metadata
+Metadata.dataset_id -l-* Metadata
+Metadata.key -u-* Metadata
+Metadata.value -u-* Metadata
+
+@enduml

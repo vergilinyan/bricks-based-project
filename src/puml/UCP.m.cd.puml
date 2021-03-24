@@ -1,0 +1,49 @@
+@startuml
+
+    right header
+        <font size=20 color=black><b>UCP.m.cd</b></font>
+    end header
+
+    actor "Менеджер" as Manager #bbdaff
+
+    note right of Manager #d9eaff
+        Власник колекцій і наборів даних, які
+        створив. Має право на керування власними.
+        Право на редагування мають і співавтори.
+    end note
+
+    usecase "<b>UC.m.3</b>\nПереглянути власну колекцію" as UC.m.3 #bbdaff
+    usecase "<b>UC.m.c</b>\nКерувати колекцією" as UC.m.c #86baff
+    usecase "<b>UC.m.c.1</b>\nЗмінити колекцію" as UC.m.c.1 #bbdaff
+
+    usecase "<b>UC.m.5</b>\nПереглянути власний набір даних" as UC.m.5 #bbdaff
+    usecase "<b>UC.m.d</b>\nКерувати набором даних" as UC.m.d #86baff
+    usecase "<b>UC.m.d.1</b>\nЗмінити набір даних" as UC.m.d.1 #bbdaff
+
+    usecase "<b>UC.m.cd.1</b>\nДодати співавтора" as UC.m.cd.1 #bbdaff
+    usecase "<b>UC.m.cd.2</b>\nВидалити співавтора" as UC.m.cd.2 #bbdaff
+    usecase "<b>UC.m.cd.3</b>\nВидалити" as UC.m.cd.3 #bbdaff
+
+    UC.m.c .u.> UC.m.3 : extends
+    UC.m.c.1 .u.|> UC.m.c
+
+    UC.m.d .u.> UC.m.5 : extends
+    UC.m.d.1 .u.|> UC.m.d
+
+    UC.m.cd.1 .u.|> UC.m.c
+    UC.m.cd.1 .u.|> UC.m.d
+    UC.m.cd.2 .u.|> UC.m.c
+    UC.m.cd.2 .u.|> UC.m.d
+    UC.m.cd.3 .u.|> UC.m.c
+    UC.m.cd.3 .u.|> UC.m.d
+
+    Manager -d-> UC.m.3
+    Manager -d-> UC.m.5
+    
+    right footer
+        <b>Bricks</b>
+        НТУУ "КПІ"
+        Київ — 2020
+    end footer
+
+@enduml

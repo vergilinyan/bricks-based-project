@@ -1,0 +1,55 @@
+@startuml
+
+entity Dataset #86baff {
+    id: INT
+}
+
+entity Concepts #aed3ff {
+    id: INT
+    concept: TEXT
+    name: TEXT
+    type: TEXT
+    unit: TEXT
+}
+
+entity DCLink #f0f0f0 {
+    dataset_id: INT
+    concept_id: INT
+}
+
+DCLink "0, *"-u-"1, 1" Dataset
+DCLink "0, *"-d-"1, 1" Concepts
+
+entity Synonyms #aed3ff {
+    concept_id: INT
+    synonym: TEXT
+}
+
+Synonyms "0, *"-l-"1, 1" Concepts
+
+entity Entities #aed3ff {
+    id: INT
+    dataset_id: INT
+    name: TEXT
+}
+
+Entities "0, *"-u-"1, 1" Dataset
+
+entity Datapoints #aed3ff {
+    id: INT
+    dataset_id: INT
+    name: TEXT
+}
+
+Datapoints "0, *"-u-"1, 1" Dataset
+
+entity Metadata #aed3ff {
+    id: INT
+    dataset_id: INT
+    key: TEXT
+    value: TEXT
+}
+
+Metadata "0, *"-u-"1, 1" Dataset
+
+@enduml

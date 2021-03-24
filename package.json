@@ -1,0 +1,32 @@
+{
+  "name": "bricks",
+  "version": "1.0.0",
+  "description": "Open Data Management System",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mixolydian-b6/Bricks.git"
+  },
+  "keywords": [
+    "open-data"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mixolydian-b6/Bricks/issues"
+  },
+  "homepage": "https://github.com/mixolydian-b6/Bricks#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-table3": "^0.6.0",
+    "lodash-node": "^3.10.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
+}
